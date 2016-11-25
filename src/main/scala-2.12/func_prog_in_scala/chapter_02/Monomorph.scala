@@ -30,4 +30,14 @@ object Monomorph {
     }
     loop(0)
   }
+
+  def isSorted[A] (ar: Array[A], ordered: (A,A) => Boolean): Boolean ={
+    @tailrec
+    def loop(current: Int): Boolean = {
+      if (current >= ar.length) true
+      else if (ordered(ar(current),ar(current+1))) false
+      else loop(current+1)
+    }
+    loop(0)
+  }
 }
