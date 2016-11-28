@@ -17,6 +17,7 @@ object Monomorph {
       else if (ss(i) == key) i
       else loop(i + 1)
     }
+
     loop(0)
   }
 
@@ -26,18 +27,21 @@ object Monomorph {
     def loop(i: Int): Int = {
       if (i >= as.length) -1
       else if (p(as(i))) i
-      else loop(i+1)
+      else loop(i + 1)
     }
+
     loop(0)
   }
 
-  def isSorted[A] (ar: Array[A], ordered: (A,A) => Boolean): Boolean ={
+  // Polymorphic function that take two arguments
+  def isSorted[A](ar: Array[A], ordered: (A, A) => Boolean): Boolean = {
     @tailrec
-    def loop(current: Int): Boolean = {
-      if (current >= ar.length) true
-      else if (ordered(ar(current),ar(current+1))) false
-      else loop(current+1)
+    def loop(i: Int): Boolean = {
+      if (i >= ar.length - 1) true
+      else if (ordered(ar(i), ar(i + 1))) false
+      else loop(i + 1)
     }
+
     loop(0)
   }
 }
