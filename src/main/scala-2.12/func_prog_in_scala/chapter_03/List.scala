@@ -27,7 +27,12 @@ object List {
   // the right hand side of a pattern. This makes it clear the value isn't relevant.
   def tail[A](ds: List[A]): List[A] = ds match {
     case Cons(_, t) => t //
-    case Nil => Nil
+    case Nil => throw new IllegalArgumentException("List is empty! Cannot take tail")
   }
 
+  //EXERCISE 3.3
+  def setHead[A](l: A, ds: List[A]): List[A] = ds match {
+    case Cons(_,t) => Cons(l,t)
+    case Nil => sys.error("setHead on empty list")
+  }
 }
