@@ -1,5 +1,7 @@
 package func_prog_in_scala.chapter_03
 
+import scala.annotation.tailrec
+
 sealed trait List[+A]
 
 case class Cons[+A](head: A, tail: List[A]) extends List[A]
@@ -24,7 +26,7 @@ object List {
   }
 
   //It's generally good practice when pattern matching to use `_` for any variables you don't intend to use on
-  // the right hand side of a pattern. This makes it clear the value isn't relevant.
+  //the right hand side of a pattern. This makes it clear the value isn't relevant.
   def tail[A](ds: List[A]): List[A] = ds match {
     case Cons(_, t) => t //
     case Nil => throw new IllegalArgumentException("List is empty! Cannot take tail")
@@ -32,7 +34,21 @@ object List {
 
   //EXERCISE 3.3
   def setHead[A](l: A, ds: List[A]): List[A] = ds match {
-    case Cons(_,t) => Cons(l,t)
+    case Cons(_, t) => Cons(l, t)
     case Nil => sys.error("setHead on empty list")
   }
+
+  //EXERCISE 3.4
+  //Generalize tail to the function drop , which removes the first n elements from a list.
+  //Note that this function takes time proportional only to the number of elements being
+  //dropped—we don’t need to make a copy of the entire List .
+
+  @tailrec
+  def drop[A](l: List[A], n: Int): List[A] =
+    if (n <= 0) l else
+      l match {
+        case Cons(_, t) => drop(t, n - 1)
+        case Nil => sys.error("Empty list")
+      }
+
 }
