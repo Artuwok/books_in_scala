@@ -76,6 +76,14 @@ object List {
     case Cons(x, xs) => f(x, foldRight(xs, z)(f))
   }
 
+
+
+  //EXERCISE 3.9
+  //Compute the length of a list using foldRight.
+  def length[A](as: List[A]): Int =
+  foldRight(as, 0)((_, acc) => acc + 1)
+
+  //EXERCISE 3.10
   //write another general list-recursion function, foldLeft , that is tail-recursive
   @tailrec
   def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
@@ -83,9 +91,17 @@ object List {
     case Cons(h, t) => foldLeft(t, f(z, h))(f)
   }
 
-  //EXERCISE 3.9
-  //Compute the length of a list using foldRight.
-  def length[A](as: List[A]): Int =
-  foldRight(as, 0)((_, acc) => acc + 1)
+  //EXERCISE 3.11
+ // Write sum , product , and a function to compute the length of a list using foldLeft.
+
+  def sumWithFoldLeft(ints: List[Int]): Int =
+    foldLeft(ints, 0) (_+_)
+
+  def productWithFoldLeft(ds: List[Double]): Double =
+    foldLeft(ds, 1.0)(_*_)
+
+  def ComputeLength[A](l: List[A]): Int =
+    foldLeft(l, 0)((acc, _) => acc +1)
+
 
 }
