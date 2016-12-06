@@ -51,4 +51,41 @@ object List {
         case Nil => sys.error("Empty list")
       }
 
+  //EXERCISE 3.5
+  //Implement dropWhile, which removes elements from the List prefix as long as they
+  //match a predicate.
+
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Cons(h, t) if f(h) => dropWhile(t, f)
+    case _ => l
+  }
+
+  //EXERCISE 3.6
+  // Implement a function, init , that returns a List
+  // consisting of all but the last element of a List . So, given List(1,2,3,4) , init will
+  // return List(1,2,3) . Why can’t this function be implemented in constant time like  tail?
+
+  def init[A](l: List[A]): List[A] = l match {
+    case Nil => Nil
+    case Cons(_, Nil) => Nil
+    case Cons(h, t) => Cons(h, init(t))
+  }
+
+  def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = as match {
+
+    case Cons(x, xs) => f(x, foldRight(xs, z)(f))
+  }
+
+  //write another general list-recursion function, foldLeft , that is tail-recursive
+  @tailrec
+  def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
+    case Nil => z
+    case Cons(h, t) => foldLeft(t, f(z, h))(f)
+  }
+
+  //EXERCISE 3.9
+  //Compute the length of a list using foldRight.
+  def length[A](as: List[A]): Int =
+  foldRight(as, 0)((_, acc) => acc + 1)
+
 }
