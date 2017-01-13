@@ -4,13 +4,18 @@ package scala_for_impatient.chapter_03
 // the swapped values. Use for / yield
 object Ex_03 extends App {
 
+  val x = Array(1, 2, 3, 4, 5)
+
+  println(swap(x).mkString(", "))
+
   def swap(a: Array[Int]): Array[Int] = {
-
-    for (i <- 0 until a.length - 1 by 2) yield {
-      val left = a(i)
-      a(i) = a(i + 1)
-      a(i+1) = left
-    }
-  }
-
+    for (elem <- 0 until a.length)
+      yield {
+        if (elem % 2 == 0) {
+          if (elem == a.length - 1) a(elem)
+          else a(elem + 1)
+        }
+        else a(elem - 1)
+      }
+  }.toArray
 }
