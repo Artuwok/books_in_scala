@@ -10,8 +10,15 @@ import java.util.Scanner
 // Or look at Chapter 9 for a Scalaesque way.
 // At the end, print out all words and their counts.
 
-object Ex_02 extends App{
+object Ex_02 extends App {
 
-  val in = new Scanner(java.io.File("myfile.txt"))
-
+  var wordsMap = new scala.collection.mutable.HashMap[String, Int]
+  val in = new Scanner(new java.io.File("/home/artemvlasenko/Desktop/myfile.txt"))
+  while (in.hasNext) {
+    val word = in.next()
+    val count = wordsMap.getOrElse(word, 0)
+    wordsMap(word) = count + 1
+    in.next()
+  }
+  wordsMap.foreach(p => println("word is: " + p._1, "count is: " + p._2))
 }
