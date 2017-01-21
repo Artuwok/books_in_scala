@@ -15,7 +15,7 @@ import scala.io.Source
 object Ex_02 extends App {
 
   // Java way
-  var wordsMap = new scala.collection.mutable.HashMap[String, Int]
+  val wordsMap = new scala.collection.mutable.HashMap[String, Int]
   val in = new Scanner(new java.io.File("/home/art/Desktop/qwe.txt"))
   while (in.hasNext) {
     val word = in.next()
@@ -29,7 +29,7 @@ object Ex_02 extends App {
   // Scala way
   val secondWordsMap = new scala.collection.mutable.HashMap[String, Int]
   val file = Source.fromFile("/home/art/Desktop/qwe.txt")
-  val tokens: Array[String] = file.mkString.split("\\s+") // s+ one or many white spases
+  val tokens: Array[String] = file.mkString.split("\\s+") // s+ one or many white spaces
 
   for (word <- tokens) yield {
     if (!secondWordsMap.contains(word)) {
