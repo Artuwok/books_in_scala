@@ -4,11 +4,11 @@ package scala_for_impatient.chapter_06
 // and define objects InchesToCentimeters, GallonsToLiters, and MilesToKilometers that extend it.
 abstract class Ex_02_UnitConversion {
 
-  def inchesToCentimeters(inches: Double)
+  def inchesToCentimeters(inches: Double): Double
 
-  def gallonsToLitres(gallons: Double)
+  def gallonsToLitres(gallons: Double): Double
 
-  def milesToKilometers(miles: Double)
+  def milesToKilometers(miles: Double): Double
 
 }
 
@@ -16,23 +16,23 @@ object InchesToCentimeters extends Ex_02_UnitConversion {
 
   override def inchesToCentimeters(inches: Double): Double = 2.54 * inches
 
-  override def gallonsToLitres(gallons: Double): Unit = ???
+  override def gallonsToLitres(gallons: Double): Double = ???
 
-  override def milesToKilometers(miles: Double): Unit = ???
+  override def milesToKilometers(miles: Double): Double = ???
 }
 
 object GallonsToLitres extends Ex_02_UnitConversion {
-  override def inchesToCentimeters(inches: Double): Unit = ???
+  override def inchesToCentimeters(inches: Double): Double = ???
 
   override def gallonsToLitres(gallons: Double): Double = 3.78541 * gallons
 
-  override def milesToKilometers(miles: Double): Unit = ???
+  override def milesToKilometers(miles: Double): Double = ???
 }
 
 object MilesToKilometers extends Ex_02_UnitConversion {
-  override def inchesToCentimeters(inches: Double): Unit = ???
+  override def inchesToCentimeters(inches: Double): Double = ???
 
-  override def gallonsToLitres(gallons: Double): Unit = ???
+  override def gallonsToLitres(gallons: Double): Double = ???
 
   override def milesToKilometers(miles: Double): Double = 1.60934 * miles
 }
