@@ -14,6 +14,6 @@ object Ex_08 extends Enumeration with App{
   val backBottomLeft = Value(0x00ffff, "green-blue")
   val backBottomRight = Value(0x000000, "black")
 
-  for (i <- Ex_08.values){ println(i)}
+  for (i <- Ex_08.values){ println(i.id + " " + i)}
 
 }
