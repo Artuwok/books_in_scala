@@ -18,7 +18,7 @@ class SimpleItem(val price: Double, val description: String) extends Item {
 
 class Bundle(var items: Array[Item]) extends Item {
 
-  def add[Item](x: Item): Array[Item] = {
+  def add(x: Item): Array[Any] = {
     items ++ Array(x)
   }
 
