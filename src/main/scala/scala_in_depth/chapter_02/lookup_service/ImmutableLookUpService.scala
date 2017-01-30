@@ -1,4 +1,4 @@
-package scala_in_depth.chapter_02
+package scala_in_depth.chapter_02.lookup_service
 
 // Better implementation since we are locking only when writing to map
 class ImmutableLookUpService[Key, Value] extends LookUpService[Key, Value] {

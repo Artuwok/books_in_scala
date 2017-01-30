@@ -1,4 +1,4 @@
-package scala_in_depth.chapter_02
+package scala_in_depth.chapter_02.lookup_service
 
 trait LookUpService[Key, Value] {
 

@@ -1,7 +1,7 @@
 package scala_in_depth.chapter_02
 
 /** Executing code if option is defined */
-object Ex_zzz extends App {
+object Listing_2_18 extends App {
 
   val a: Option[Int] = Option(3)
 
