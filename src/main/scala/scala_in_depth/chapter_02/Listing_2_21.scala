@@ -1,6 +1,5 @@
 package scala_in_depth.chapter_02
 
-
 /** Generically converting functions
   *
   * The lift3 function takes a
