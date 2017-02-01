@@ -1,5 +1,7 @@
 package scala_in_depth.chapter_03
 
+import scala.annotation.tailrec
+
 
 /** The help method, called loop, is implemented with a pattern match. The first case
   * pops the first element from the queue of nodes to inspect. It then checks to see if this
@@ -13,6 +15,7 @@ package scala_in_depth.chapter_03
 case class Node(name: String, edges: List[Node]) {
 
   def search(start: Node, p: Node => Boolean): Option[Node] = {
+    @tailrec
     def loop(nodeQueue: List[Node], visited: Set[Node]): Option[Node] = nodeQueue match {
 
       case head :: tail if p(head) => Some(head)
