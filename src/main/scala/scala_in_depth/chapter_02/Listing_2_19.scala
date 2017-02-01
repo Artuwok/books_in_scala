@@ -1,6 +1,7 @@
 package scala_in_depth.chapter_02
 
 /** Executing code if several options are defined */
+/*
 object Listing_2_19 extends App {
 
   def authentificationSession(session: HttpSession, userName: Option[String], password: Option[Array[Char]]): Unit = {
@@ -14,3 +15,4 @@ object Listing_2_19 extends App {
     }
   }
 }
+*/
